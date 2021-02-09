@@ -1,15 +1,12 @@
-import {Component, Injectable, OnInit} from '@angular/core';
-import { Location } from '@angular/common';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserLdap} from '../../model/user-ldaps';
-import {UsersService} from '../../service/users.service';
 import {FormBuilder} from '@angular/forms';
 import {ConfirmValidParentMatcher, passwordValidator} from './passwords-validator.directive';
 
 
 export abstract class LdapDetailComponent{
 
-  user: UserLdap;
+  user: UserLdap = null;
   passwordPlaceHolder: string;
   processLoadRunning = false;
   processValidateRunning = false;
@@ -43,7 +40,7 @@ export abstract class LdapDetailComponent{
   abstract validateForm(): void;
 
   goToLdap(): void {
-    this.router.navigate(['/users/list']);
+    this.router.navigate(['/user/list']);
   }
   onSubmitForm(): void {
     this.validateForm();
@@ -92,6 +89,7 @@ export abstract class LdapDetailComponent{
 
   protected getUserFromFormControl(): UserLdap {
     return {
+      id: this.user === null ? 0 : this.user.id,
       login: this.userForm.get('login').value,
       nom: this.userForm.get('nom').value,
       prenom: this.userForm.get('prenom').value,

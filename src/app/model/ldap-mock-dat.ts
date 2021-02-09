@@ -1,6 +1,7 @@
 import {UserLdap} from './user-ldaps';
 export const LDAP_USERS: UserLdap[] = [
   {
+    id: 1, // A ajouter pour InMemoryUsersService, il faut l’incrément de 1
     login: 'test.v1',
     nom: 'V1',
     prenom: 'Test',
@@ -15,6 +16,7 @@ export const LDAP_USERS: UserLdap[] = [
     active: true,
   },
   {
+    id: 2, // A ajouter pour InMemoryUsersService, il faut l’incrément de 1
     login: 'test.v8',
     nom: 'V8',
     prenom: 'Test',

@@ -12,6 +12,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppMaterialModule} from '../appmaterial.module';
 import {LdapComponent} from './ldap/ldap.component';
 import {ChartsModule} from 'ng2-charts';
+import {HttpClientModule} from '@angular/common/http';
+import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
+import {InMemoryUsersService} from './in-memory-users.service';
 
 
 
@@ -33,7 +36,14 @@ import {ChartsModule} from 'ng2-charts';
     ReactiveFormsModule,
     ChartsModule,
     AppMaterialModule,
-    LdapManagementRoutingModule
+    LdapManagementRoutingModule,
+    HttpClientModule,
+    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
+    // and returns simulated server responses.
+    // Remove it when a real server is ready to receive requests.
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryUsersService, { dataEncapsulation: false }
+    )
   ]
 })
 export class LdapManagementModule { }
