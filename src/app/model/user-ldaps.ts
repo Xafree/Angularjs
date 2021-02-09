@@ -1,4 +1,5 @@
 export interface UserLdap {
+  id: number; // A ajouter pour InMemoryUsersService
   login: string;
   nom: string;
   prenom: string;
